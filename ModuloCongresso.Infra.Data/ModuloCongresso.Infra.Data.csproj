@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8A61631-1549-419E-A0AC-5F405C5A1B88}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModuloCongresso.Infra.Data</RootNamespace>
+    <AssemblyName>ModuloCongresso.Infra.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DomainValidation.1.0.0\lib\net451\DomainValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\ContextInitializer.cs" />
+    <Compile Include="Context\ModuloCongressoContext.cs" />
+    <Compile Include="EntityConfig\AntiFurtoConfig.cs" />
+    <Compile Include="EntityConfig\ClienteConfig.cs" />
+    <Compile Include="EntityConfig\CoberturasConfig.cs" />
+    <Compile Include="EntityConfig\CoberturasProdutoConfig.cs" />
+    <Compile Include="EntityConfig\CotacaoConfig.cs" />
+    <Compile Include="EntityConfig\DistanciaTrabalhoConfig.cs" />
+    <Compile Include="EntityConfig\EnderecoConfig.cs" />
+    <Compile Include="EntityConfig\EstadoCivilConfig.cs" />
+    <Compile Include="EntityConfig\CoberturasItemConfig.cs" />
+    <Compile Include="EntityConfig\ImpostoConfig.cs" />
+    <Compile Include="EntityConfig\ItemConfig.cs" />
+    <Compile Include="EntityConfig\MarcaConfig.cs" />
+    <Compile Include="EntityConfig\ModeloConfig.cs" />
+    <Compile Include="EntityConfig\PaisResidenciaConfig.cs" />
+    <Compile Include="EntityConfig\PerfilConfig.cs" />
+    <Compile Include="EntityConfig\ProdutoConfig.cs" />
+    <Compile Include="EntityConfig\ProfissaoConfig.cs" />
+    <Compile Include="EntityConfig\QuestionarioConfig.cs" />
+    <Compile Include="EntityConfig\RastreadorConfig.cs" />
+    <Compile Include="EntityConfig\SexoConfig.cs" />
+    <Compile Include="EntityConfig\TempoHabilitacaoConfig.cs" />
+    <Compile Include="EntityConfig\TipoCalculoConfig.cs" />
+    <Compile Include="EntityConfig\TipoResidenciaConfig.cs" />
+    <Compile Include="EntityConfig\TipoSeguroConfig.cs" />
+    <Compile Include="EntityConfig\UsoConfig.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ClienteRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\AntiFurtoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\CoberturaItemRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\CoberturasProdutoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\CoberturasRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\CotacaoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\DistanciaTrabalhoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\EnderecoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\EstadoCivilRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\ImpostoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\ItemRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\UsoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\PerfilRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\ProdutoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\QuestionarioRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\RastreadorRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\SexoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\TempoHabilitacaoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\TipoCalculoRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\TipoResidenciaRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\TipoSeguroRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\MarcaRepository.cs" />
+    <Compile Include="Repository\CotacaoRepository\ModeloRepository.cs" />
+    <Compile Include="Repository\PaisResidenciaRepository.cs" />
+    <Compile Include="Repository\ProfissaoRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModuloCongresso.Domain\ModuloCongresso.Domain.csproj">
+      <Project>{cc2afde7-a1b5-4073-acd7-c948d9fe4697}</Project>
+      <Name>ModuloCongresso.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

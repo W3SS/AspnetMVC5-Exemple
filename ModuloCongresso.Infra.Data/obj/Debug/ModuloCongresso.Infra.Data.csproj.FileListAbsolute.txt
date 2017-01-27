@@ -1,0 +1,15 @@
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\ModuloCongresso.Infra.Data.dll.config
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\ModuloCongresso.Infra.Data.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\ModuloCongresso.Infra.Data.pdb
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\Dapper.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\DomainValidation.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\EntityFramework.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\ModuloCongresso.Domain.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\ModuloCongresso.Domain.pdb
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\Dapper.xml
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\EntityFramework.xml
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\obj\Debug\ModuloCongresso.Infra.Data.csprojResolveAssemblyReference.cache
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\obj\Debug\ModuloCongresso.Infra.Data.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.Data\obj\Debug\ModuloCongresso.Infra.Data.pdb

@@ -1,0 +1,111 @@
+﻿@using System.Web.UI.WebControls
+@model ModuloCongresso.Application.ViewModels.Cotacao.CotacaoViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout_3.cshtml";
+    ViewBag.Title = "Dashboard v.4";
+}
+
+<body>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Resultado</h5>
+                            <div class="ibox-tools">
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content ibox-heading">
+                            <small><i class="fa fa-exclamation-triangle"></i> Cotação Calculada com Sucesso !!!</small>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <font face="Palatino Linotype">Cotação:</font>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @Html.DisplayFor(model => model.CotacaoId, new { htmlAttributes = new { @class = "form-control margin-bottom-10", id = "TxtCotacaoId" } })
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <font face="Palatino Linotype">Prêmio:</font>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            R$ @Html.DisplayFor(model => model.PremioTotal, new { htmlAttributes = new { @class = "form-control margin-bottom-10", id = "TxtPremio" } })
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <font face="Palatino Linotype">Franquia:</font>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            Em breve
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <font face="Palatino Linotype">Veículo:</font>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control margin-bottom-10", id = "TxtDescricaoModelo" } })
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <button type="button" class="btn btn-outline button-glow btn-info btn-sm dim" id="btnReCalcular">Re-Calcular !</button>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button type="button" class="btn btn-outline button-glow btn-info btn-sm dim" id="btnInicial">Menu Inicial !</button>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button type="button" class="btn btn-outline button-glow btn-info btn-sm dim" id="btnImpressao">Imprimir Cotação !</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts {
+    @Scripts.Render("~/plugins/flot")
+    @Scripts.Render("~/plugins/chartJs")
+    @Scripts.Render("~/plugins/peity")
+    @Scripts.Render("~/plugins/sparkline")
+    @Scripts.Render("~/Scripts/Cotacao/CotacaoScript.js")
+}

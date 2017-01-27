@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DDB68719-D0BC-4324-A435-DA4F397AE866}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModuloCongresso.Application</RootNamespace>
+    <AssemblyName>ModuloCongresso.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DomainValidation.1.0.0\lib\net451\DomainValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\SelectedCoberturaViewModelToCoberturaItem.cs" />
+    <Compile Include="AutoMapper\SelectedEnderecoToClienteEnderecoViewModel.cs" />
+    <Compile Include="AutoMapper\SelectedItemToItemViewModel.cs" />
+    <Compile Include="AutoMapper\SelectedPerfilToPerfilViewModel.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Interfaces\Cotacao\IAntiFurtoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ICoberturaAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ICoberturaItemAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ICotacaoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IDistanciaTrabalhoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IEstadoCivilAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IImpostoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IItemAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IModeloAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IPerfilAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IProdutoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IQuestionarioAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IRastreadorAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ISexoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ITempoHabilitacaoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ITipoCalculoAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ITipoResidenciaAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\ITipoSeguroAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IUsoAppService.cs" />
+    <Compile Include="Interfaces\IPaisResidenciaAppService.cs" />
+    <Compile Include="Interfaces\Cotacao\IMarcaAppService.cs" />
+    <Compile Include="Services\AntiFurtoAppService.cs" />
+    <Compile Include="Services\ClienteAppService.cs" />
+    <Compile Include="Interfaces\IClienteAppService.cs" />
+    <Compile Include="Interfaces\IProfissaoAppService.cs" />
+    <Compile Include="Services\CoberturaAppService.cs" />
+    <Compile Include="Services\CoberturaItemAppService.cs" />
+    <Compile Include="Services\CotacaoAppService.cs" />
+    <Compile Include="Services\DistanciaTrabalhoAppService.cs" />
+    <Compile Include="Services\EstadoCivilAppService.cs" />
+    <Compile Include="Services\ImpostoAppService.cs" />
+    <Compile Include="Services\ItemAppService.cs" />
+    <Compile Include="Services\ModeloAppService.cs" />
+    <Compile Include="Services\MarcaAppService.cs" />
+    <Compile Include="Services\PaisResidenciaAppService.cs" />
+    <Compile Include="Services\PerfilAppService.cs" />
+    <Compile Include="Services\ProdutoAppService.cs" />
+    <Compile Include="Services\ProfissaoAppService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Common\AppService.cs" />
+    <Compile Include="Services\QuestionarioAppService.cs" />
+    <Compile Include="Services\RastreadorAppService.cs" />
+    <Compile Include="Services\SexoAppService.cs" />
+    <Compile Include="Services\TempoHabilitacaoAppService.cs" />
+    <Compile Include="Services\TipoCalculoAppService.cs" />
+    <Compile Include="Services\TipoResidenciaAppService.cs" />
+    <Compile Include="Services\TipoSeguroAppService.cs" />
+    <Compile Include="Services\UsoAppService.cs" />
+    <Compile Include="ViewModels\Business\CotacaoAutomovelViewModel.cs" />
+    <Compile Include="ViewModels\Business\ManageCotacaoViewModel.cs" />
+    <Compile Include="ViewModels\ClienteEnderecoViewModel.cs" />
+    <Compile Include="ViewModels\ClienteViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\AntiFurtoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\CoberturaItemViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\CoberturasViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\CotacaoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\DistanciaTrabalhoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\EstadoCivilViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\ImpostoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\ItemViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\ModeloViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\PerfilViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\ProdutoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\QuestionarioViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\RastreadorViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\SexoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\TempoHabilitacaoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\TipoCalculoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\TipoResidenciaViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\TipoSeguroViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\UsoViewModel.cs" />
+    <Compile Include="ViewModels\EnderecoViewModel.cs" />
+    <Compile Include="ViewModels\Cotacao\MarcaViewModel.cs" />
+    <Compile Include="ViewModels\PaisResidenciaViewModel.cs" />
+    <Compile Include="ViewModels\ProfissaoViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModuloCongresso.Domain\ModuloCongresso.Domain.csproj">
+      <Project>{CC2AFDE7-A1B5-4073-ACD7-C948D9FE4697}</Project>
+      <Name>ModuloCongresso.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModuloCongresso.Infra.CrossCutting.MvcFilters\ModuloCongresso.Infra.CrossCutting.MvcFilters.csproj">
+      <Project>{71960B20-0E2E-4AF9-997B-530EF89FF2EE}</Project>
+      <Name>ModuloCongresso.Infra.CrossCutting.MvcFilters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModuloCongresso.Infra.Data\ModuloCongresso.Infra.Data.csproj">
+      <Project>{b8a61631-1549-419e-a0ac-5f405c5a1b88}</Project>
+      <Name>ModuloCongresso.Infra.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

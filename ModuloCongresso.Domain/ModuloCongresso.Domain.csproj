@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC2AFDE7-A1B5-4073-ACD7-C948D9FE4697}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModuloCongresso.Domain</RootNamespace>
+    <AssemblyName>ModuloCongresso.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DomainValidation.1.0.0\lib\net451\DomainValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AntiFurto.cs" />
+    <Compile Include="Entities\Coberturas.cs" />
+    <Compile Include="Entities\CoberturasItem.cs" />
+    <Compile Include="Entities\CoberturasProduto.cs" />
+    <Compile Include="Entities\Cotacao.cs" />
+    <Compile Include="Entities\DistanciaTrabalho.cs" />
+    <Compile Include="Entities\EstadoCivil.cs" />
+    <Compile Include="Entities\Imposto.cs" />
+    <Compile Include="Entities\Item.cs" />
+    <Compile Include="Entities\Perfil.cs" />
+    <Compile Include="Entities\Questionario.cs" />
+    <Compile Include="Entities\Enums.cs" />
+    <Compile Include="Entities\Marca.cs" />
+    <Compile Include="Entities\Modelo.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Endereco.cs" />
+    <Compile Include="Entities\PaisResidencia.cs" />
+    <Compile Include="Entities\Produto.cs" />
+    <Compile Include="Entities\Profissao.cs" />
+    <Compile Include="Entities\Rastreador.cs" />
+    <Compile Include="Entities\Sexo.cs" />
+    <Compile Include="Entities\TempoHabilitacao.cs" />
+    <Compile Include="Entities\TipoCalculo.cs" />
+    <Compile Include="Entities\TipoResidencia.cs" />
+    <Compile Include="Entities\TipoSeguro.cs" />
+    <Compile Include="Entities\Uso.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ICoberturaItemRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ICoberturaRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ICoberturasProdutoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IAntiFurtoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IDistanciaTrabalhoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IEnderecoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IEstadoCivilRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IImpostoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IItemRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IPerfilRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IProdutoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IQuestionarioRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IRastreadorRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ISexoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ITempoHabilitacaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ITipoCalculoRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ITipoResidenciaRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ITipoSeguroRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IUsoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\ICotacaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPaisResidenciaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IProfissaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IMarcaRepository.cs" />
+    <Compile Include="Interfaces\Repository\CotacaoRepository\IModeloRepository.cs" />
+    <Compile Include="Interfaces\Services\Business\ICalculoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IAntiFurtoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ICoberturaItemService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ICoberturaService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ICoberturasProdutoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IDistanciaTrabalhoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IEnderecoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IEstadoCivilService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IImpostoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IItemService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IPerfilService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IProdutoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IQuestionarioService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IRastreadorService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ISexoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ITempoHabilitacaoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ITipoCalculoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ITipoResidenciaService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ITipoSeguroService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IUsoService.cs" />
+    <Compile Include="Interfaces\Services\IClienteService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\ICotacaoService.cs" />
+    <Compile Include="Interfaces\Services\IPaisResidenciaService.cs" />
+    <Compile Include="Interfaces\Services\IProfissaoService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IMarcaService.cs" />
+    <Compile Include="Interfaces\Services\CotacaoService\IModeloService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Business\CalculoService.cs" />
+    <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\CotacaoService\AntiFurtoService.cs" />
+    <Compile Include="Services\CotacaoService\CoberturaItemService.cs" />
+    <Compile Include="Services\CotacaoService\CoberturaService.cs" />
+    <Compile Include="Services\CotacaoService\CoberturasProdutoService.cs" />
+    <Compile Include="Services\CotacaoService\CotacaoService.cs" />
+    <Compile Include="Services\CotacaoService\DistanciaTrabalhoService.cs" />
+    <Compile Include="Services\CotacaoService\EnderecoService.cs" />
+    <Compile Include="Services\CotacaoService\EstadoCivilService.cs" />
+    <Compile Include="Services\CotacaoService\ImpostoService.cs" />
+    <Compile Include="Services\CotacaoService\ItemService.cs" />
+    <Compile Include="Services\CotacaoService\PerfilService.cs" />
+    <Compile Include="Services\CotacaoService\ProdutoService.cs" />
+    <Compile Include="Services\CotacaoService\QuestionarioService.cs" />
+    <Compile Include="Services\CotacaoService\RastreadorService.cs" />
+    <Compile Include="Services\CotacaoService\SexoService.cs" />
+    <Compile Include="Services\CotacaoService\TempoHabilitacaoService.cs" />
+    <Compile Include="Services\CotacaoService\TipoCalculoService.cs" />
+    <Compile Include="Services\CotacaoService\TipoResidenciaService.cs" />
+    <Compile Include="Services\CotacaoService\TipoSeguroService.cs" />
+    <Compile Include="Services\CotacaoService\MarcaService.cs" />
+    <Compile Include="Services\CotacaoService\ModeloService.cs" />
+    <Compile Include="Services\CotacaoService\UsoService.cs" />
+    <Compile Include="Services\PaisResidenciaService.cs" />
+    <Compile Include="Services\ProfissaoService.cs" />
+    <Compile Include="Specifications\ClienteSpec\ClienteDevePossuirCPFUnicoSpecification.cs" />
+    <Compile Include="Specifications\ClienteSpec\ClienteDevePossuirEmailUnicoSpecification.cs" />
+    <Compile Include="Specifications\ClienteSpec\ClienteDeveSerMaiorDeIdadeSpecification.cs" />
+    <Compile Include="Specifications\ClienteSpec\ClienteDeveTerCPFValidoSpecification.cs" />
+    <Compile Include="Specifications\ClienteSpec\ClienteDeveTerEmailValidoSpecification.cs" />
+    <Compile Include="Specifications\CotacaoSpec\CotacaoDevePossuirDataValidaSpecification.cs" />
+    <Compile Include="Specifications\ItemSpec\ItemDevePossuirModeloValidoSelecionadoSpecification.cs" />
+    <Compile Include="Specifications\QuestionarioSpec\QuestionarioAntiFurtoObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\QuestionarioSpec\QuestionarioColFaculdadeObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\QuestionarioSpec\QuestionarioPropriedadeObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\QuestionarioSpec\QuestionarioRastreadorObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\QuestionarioSpec\QuestionarioResidenciaObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\QuestionarioSpec\QuestionarioTrabalhoObrigatorioSpecification.cs" />
+    <Compile Include="Validations\Clientes\ClienteAptoParaCadastroValidation.cs" />
+    <Compile Include="Validations\Cotacao\CotacaoEstaConsistenteValidation.cs" />
+    <Compile Include="Validations\Documentos\CpfValidation.cs" />
+    <Compile Include="Validations\Documentos\EmailValidation.cs" />
+    <Compile Include="Validations\Documentos\DataVigenciaValidation.cs" />
+    <Compile Include="Validations\Documentos\ModeloValidation.cs" />
+    <Compile Include="Validations\Documentos\QuestionarioGaragemValidation.cs" />
+    <Compile Include="Validations\Documentos\QuestionarioSegurancaValidation.cs" />
+    <Compile Include="Validations\ValidationMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationMessages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Validations\ValidationMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

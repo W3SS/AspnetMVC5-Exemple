@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Automóvel </h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="form-group col-sm-3 alignright">
+                        <button class="btn btn-outline btn-success  dim" type="button" id="item-button" name="btnCotacao">Iniciar Cotação Online!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @Scripts.Render("~/plugins/flot")
+        @Scripts.Render("~/plugins/chartJs")
+        @Scripts.Render("~/plugins/peity")
+        @Scripts.Render("~/Scripts/Cotacao/CotacaoScript.js")
+    }
