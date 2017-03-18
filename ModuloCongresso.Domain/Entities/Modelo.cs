@@ -16,6 +16,8 @@
 
         public decimal Valor { get; set; }
 
+        public decimal Franquia { get; set; }
+
         public int MarcaId { get; set; }
 
         public virtual Marca Marca { get; set; }

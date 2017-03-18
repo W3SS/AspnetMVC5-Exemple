@@ -2,6 +2,7 @@
 using ModuloCongresso.Domain.Interfaces.Services.CotacaoService;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ModuloCongresso.Domain.Entities;
 
 namespace ModuloCongresso.Domain.Services.CotacaoService
@@ -52,6 +53,19 @@ namespace ModuloCongresso.Domain.Services.CotacaoService
         public IEnumerable<Cotacao> ObterCotacoesPorUsuario(Guid userId)
         {
             return _cotacaoRepository.ObterCotacoesPorUsuario(userId);
+        }
+
+        public decimal ObterPremioCotacao(int cotacaoId)
+        {
+            var cotacao = _cotacaoRepository.ObterCotacaoPorId(cotacaoId);
+
+            return cotacao.PremioTotal;
+        }
+
+        public Cotacao Validar(Cotacao cotacao)
+        {
+            cotacao.IsValid();
+            return cotacao;
         }
     }
 }

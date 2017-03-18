@@ -68,6 +68,16 @@ namespace ModuloCongresso.Application.Services
             return _modeloService.ChecarVeiculoZeroKmCotacao(cotacaoId);
         }
 
+        public decimal ObterFranquiaModelo(int cotacaoId)
+        {
+            return _modeloService.ObterFranquiaModelo(cotacaoId);
+        }
+
+        public string ObterDescricaoModelo(int modeloId)
+        {
+            return _modeloService.ObterDescricaoModelo(modeloId);
+        }
+
         public void Dispose()
         {
             _modeloService.Dispose();

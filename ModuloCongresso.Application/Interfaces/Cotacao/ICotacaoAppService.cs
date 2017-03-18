@@ -13,5 +13,9 @@ namespace ModuloCongresso.Application.Interfaces.Cotacao
         CotacaoViewModel ObterCotacaoPorId(int cotacaoId);
 
         IEnumerable<CotacaoViewModel> ObterCotacoesPorUsuario(Guid userId);
+
+        decimal ObterPremioCotacao(int cotacaoId);
+
+        CotacaoViewModel Validar(CotacaoViewModel cotacaoViewModel);
     }
 }

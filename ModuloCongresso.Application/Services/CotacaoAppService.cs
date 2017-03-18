@@ -6,12 +6,10 @@ using System;
 using System.Linq;
 using AutoMapper;
 using ModuloCongresso.Application.AutoMapper;
-using ModuloCongresso.Application.ViewModels;
 using ModuloCongresso.Application.ViewModels.Cotacao;
 using ModuloCongresso.Domain.Entities;
 using ModuloCongresso.Domain.Interfaces.Services;
 using ModuloCongresso.Domain.Interfaces.Services.Business;
-using ModuloCongresso.Infra.CrossCutting.MvcFilters;
 using System.Collections.Generic;
 
 namespace ModuloCongresso.Application.Services
@@ -146,6 +144,25 @@ namespace ModuloCongresso.Application.Services
             }
 
             return obterCotacoesPorUsuario;
+        }
+
+        public decimal ObterPremioCotacao(int cotacaoId)
+        {
+            return _cotacaoService.ObterPremioCotacao(cotacaoId);
+        }
+
+        public CotacaoViewModel Validar(CotacaoViewModel cotacaoViewModel)
+        {
+            var cotacao = Mapper.Map<Cotacao>(cotacaoViewModel);
+            var cliente = Mapper.Map<Cliente>(cotacaoViewModel.Cliente);
+            var endereco = Mapper.Map<Endereco>(cotacaoViewModel.Cliente);
+
+            cliente.Enderecos.Add(endereco);
+            cotacao.Clientes.Add(cliente);
+
+            var cotacaoReturn = _cotacaoService.Validar(cotacao);
+
+            return Mapper.Map<CotacaoViewModel>(cotacaoReturn);
         }
 
         public void Dispose()

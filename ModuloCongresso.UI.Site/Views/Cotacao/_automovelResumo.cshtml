@@ -1,0 +1,65 @@
+﻿@model ModuloCongresso.Application.ViewModels.Cotacao.CotacaoViewModel
+
+<div class="col-lg-3">
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Resumo do Seguro</h5>
+        </div>
+        <div class="ibox-content no-padding">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <font face="Palatino Linotype">
+                                <strong>Nº da Cotação: </strong>
+                                @Html.DisplayFor(model => model.CotacaoId, new { htmlAttributes = new { @class = "form-control margin-bottom-10"} })
+                            </font>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <font face="Palatino Linotype">
+                                <strong>Segurado:</strong>
+                            </font>
+                            <font size="1">
+                                <label class="font-noraml" id="lblSeguradoResumo"></label>
+                            </font>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <font face="Palatino Linotype">
+                                <strong>Veículo</strong>
+                            </font>
+                            <font size="1">
+                                <label class="font-noraml" id="lblVeiculoResumo"></label>
+                            </font>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <font face="Palatino Linotype">
+                                <strong>Produto:</strong>
+                            </font>
+                            <font size="1">
+                                <label class="font-noraml">Automóvel</label>
+                            </font>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,5 +26,9 @@ namespace ModuloCongresso.Application.Interfaces.Cotacao
         ICollection<string> ObterAnoFabModCotacao(int cotacaoId);
 
         bool ChecarVeiculoZeroKmCotacao(int cotacaoId);
+
+        decimal ObterFranquiaModelo(int cotacaoId);
+
+        string ObterDescricaoModelo(int modeloId);
     }
 }

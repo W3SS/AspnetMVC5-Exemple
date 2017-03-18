@@ -1,7 +1,6 @@
 ﻿using System;
 using ModuloCongresso.Domain.Entities;
 using ModuloCongresso.Domain.Interfaces.Services.Business;
-using System.Globalization;
 using ModuloCongresso.Domain.Interfaces.Services.CotacaoService;
 
 namespace ModuloCongresso.Domain.Services.Business
@@ -18,6 +17,7 @@ namespace ModuloCongresso.Domain.Services.Business
         public decimal CalcularPremio(Cotacao cotacao, Item item, Perfil perfil, Questionario questionario)
         {
             double premio = 0;
+            double premioMinimo = 1000;
 
             foreach (var coberturas in item.Coberturas)
             {
@@ -27,7 +27,10 @@ namespace ModuloCongresso.Domain.Services.Business
                 var valor = coberturas.Valor * _coberturasProdutoService.ObterTaxaCoberturaProduto(item.ProdutoId, coberturas.CoberturaId);
                 premio = premio + valor;
             }
-            return decimal.Parse(premio.ToString(CultureInfo.InvariantCulture));
+
+            premio = premio + premioMinimo;
+
+            return new decimal(premio);
         }
     }
 }

@@ -136,6 +136,7 @@
     <Compile Include="Services\TipoResidenciaAppService.cs" />
     <Compile Include="Services\TipoSeguroAppService.cs" />
     <Compile Include="Services\UsoAppService.cs" />
+    <Compile Include="ViewModels\Business\CotacaoResultadoViewModel.cs" />
     <Compile Include="ViewModels\Business\CotacaoAutomovelViewModel.cs" />
     <Compile Include="ViewModels\Business\ManageCotacaoViewModel.cs" />
     <Compile Include="ViewModels\ClienteEnderecoViewModel.cs" />

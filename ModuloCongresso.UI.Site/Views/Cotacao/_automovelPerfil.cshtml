@@ -1,0 +1,149 @@
+﻿@model ModuloCongresso.Application.ViewModels.Cotacao.PerfilViewModel
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagSegPrincipalCondutor)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionSegPrinc_Sim" name="checkSegPr"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionSegPrinc_Nao" name="checkSegPr"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.CpfPrincipalCondutor)
+            </font>
+            @Html.EditorFor(model => model.CpfPrincipalCondutor, new {htmlAttributes = new {@class = "form-control margin-bottom-10", id = "formCPFPrCondId"}})
+            @Html.ValidationMessageFor(model => model.CpfPrincipalCondutor, "", new {@class = "text-danger"})
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.NomePrincipalCondutor)
+            </font>
+            @Html.EditorFor(model => model.NomePrincipalCondutor, new {htmlAttributes = new {@class = "form-control margin-bottom-10", id = "formNomePrCondId"}})
+            @Html.ValidationMessageFor(model => model.NomePrincipalCondutor, "", new {@class = "text-danger"})
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.DataNascPrincipalCondutor)
+            </font>
+            @Html.EditorFor(model => model.DataNascPrincipalCondutor, new {htmlAttributes = new {@class = "form-control margin-bottom-10", id = "formDtNascPrCondId"}})
+            @Html.ValidationMessageFor(model => model.DataNascPrincipalCondutor, "", new {@class = "text-danger"})
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.EstadoCivil)
+            </font>
+            <div class="input-group">
+                @Html.DropDownListFor(model => model.EstadoCivilId, Model.EstadoCivil, "Selecione", new {id = "ddlEstadoCivilId", tabindex = "2"})
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.Sexo)
+            </font>
+            <div class="input-group">
+                <div class="input-group">
+                    @Html.DropDownListFor(model => model.SexoId, Model.Sexo, "Selecione", new {id = "ddlSexoId", tabindex = "2"})
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.TempoHabilitacao)
+            </font>
+            <div class="input-group">
+                <div class="input-group">
+                    @Html.DropDownListFor(model => model.TempoHabilitacaoId, Model.TempoHabilitacao, "Selecione", new {id = "ddlTempoHabId", tabindex = "2"})
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagPontosCarteira)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionPontos_Sim" name="checkPontos"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionPontos_Nao" name="checkPontos"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.TipoResidencia)
+            </font>
+            <div class="input-group">
+                @Html.DropDownListFor(model => model.TipoResidenciaId, Model.TipoResidencia, "Selecione", new {id = "ddlTipoResidenciaId", tabindex = "2"})
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.QuantidadeVeicResidencia)
+            </font>
+            <div class="input-group">
+                <div class="input-group">
+                    <select id="ddlQtdVeicResId" tabindex="2"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.DistanciaTrabalho)
+            </font>
+            <div class="input-group">
+                <div class="input-group">
+                    @Html.DropDownListFor(model => model.DistanciaTrabalhoId, Model.DistanciaTrabalho, "Selecione", new {id = "ddlDistanciaTrabalhoId", tabindex = "2"})
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagResideMenorIdade)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionMenorIdade_Sim" name="checkMenorIdade"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionMenorIdade_Nao" name="checkMenorIdade"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,6 +13,6 @@ C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\Modulo
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.CrossCutting.MvcFilters\bin\Debug\System.Web.WebPages.xml
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.CrossCutting.MvcFilters\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.CrossCutting.MvcFilters\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.CrossCutting.MvcFilters\obj\Debug\ModuloCongresso.Infra.CrossCutting.MvcFilters.csprojResolveAssemblyReference.cache
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.CrossCutting.MvcFilters\obj\Debug\ModuloCongresso.Infra.CrossCutting.MvcFilters.dll
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.CrossCutting.MvcFilters\obj\Debug\ModuloCongresso.Infra.CrossCutting.MvcFilters.pdb
-C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Infra.CrossCutting.MvcFilters\obj\Debug\ModuloCongresso.Infra.CrossCutting.MvcFilters.csprojResolveAssemblyReference.cache

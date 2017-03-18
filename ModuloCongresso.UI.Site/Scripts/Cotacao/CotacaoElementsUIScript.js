@@ -1,5 +1,113 @@
 ﻿$(document).ready(function () {
 
+    $("#wizard").steps({
+        onFinishing: function (event, currentIndex) {
+            var retorno = true;
+
+            if (currentIndex === 4) {
+                retorno = acaoCalcular();
+            }
+            return retorno;
+        },
+        onStepChanging: function (event, currentIndex, newIndex) {
+            var step = false;
+            var url = null;
+            var model = null;
+
+            if (currentIndex > newIndex) {
+                return true;
+            }
+
+            event.preventDefault();
+            $("#errorSummaryCotacao").hide();
+            $("#errorSummaryCotacao").empty();
+
+            if (currentIndex === 0) {
+                model = MountBasicInformation();
+                var cliente = MountClient();
+
+                model.Cliente = cliente;
+
+                url = '/Cotacao/CotacaoAutomovelSeguroSegurado/';
+
+            }else if (currentIndex === 1) {
+                model = MountItem();
+                url = '/Cotacao/CotacaoAutomovelVeiculo/';
+
+            } else if (currentIndex === 2) {
+                model = MountQuestionario();
+                url = '/Cotacao/CotacaoAutomovelQuestionario/';
+
+            } else if (currentIndex === 3) {
+                model = MountPerfil();
+                url = '/Cotacao/CotacaoAutomovelPerfil/';
+            }
+
+            $.ajax(
+            {
+                dataType: 'JSON',
+                url: url,
+                async: false,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ model: model }),
+
+                success: function (response) {
+
+                    if (response.error === "ModelStateError") {
+                        MountModelStateErrorMessage(response.model);
+                        return false;
+                    }
+
+                    if (response.error === "ValildationResultError") {
+                        MountValildationResultError(response.model);
+                        return false;
+                    }
+                    step = true;
+                    return true;
+                },
+                error: function (xhr) {
+                    alert("An error occured when trying to create your character. Plase try again later");
+                }
+            });
+
+            if (step) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        onStepChanged: function(event, currentIndex, priorIndex) {
+            if (currentIndex === 4) {
+                if (typeof jQuery("#rowSelectedVeiculo").data("id") !== "undefined") {
+                    acaoTravarCoberturaBasica(true, jQuery("#rowSelectedVeiculo").data("id"));
+                } else {
+                    acaoTravarCoberturaBasica(false, null);
+                }
+            }
+
+            if (currentIndex === 1) {
+                $('#lblSeguradoResumo').text($("#formNomeId").val()).change();
+            }
+
+            if (currentIndex === 2) {
+
+                if (typeof jQuery("#rowSelectedVeiculo").data("id") !== "undefined") {
+                    var url = '/Cotacao/LoadDescricaoModelo/?modeloId=' + jQuery("#rowSelectedVeiculo").data("id");
+
+                    $.getJSON(url, function (data) {
+
+                        var item = JSON.parse(JSON.stringify(data));
+
+                        $('#lblVeiculoResumo').text(item).val();
+                    });
+                }
+            }
+        }
+    });
+
+    acaoInicializarCampos();
+
     acaoCamposGeral();
 
     acaoMarcaModelo();
@@ -26,53 +134,51 @@
 
     acaoPrincipalCondutor();
 
-    acaoCalcular();
-
     acaoVoltar();
-
-    //var navListItems = $('div.setup-panel div a'),
-    //        allWells = $('.setup-content'),
-    //        allNextBtn = $('.nextBtn');
-
-    //allWells.hide();
-
-    //navListItems.click(function (e) {
-    //    e.preventDefault();
-    //    var $target = $($(this).attr('href')),
-    //            $item = $(this);
-
-    //    if (!$item.hasClass('disabled')) {
-    //        navListItems.removeClass('btn-primary').addClass('btn-default');
-    //        $item.addClass('btn-primary');
-    //        allWells.hide();
-    //        $target.show();
-    //        $target.find('input:eq(0)').focus();
-    //    }
-    //});
-
-    //allNextBtn.click(function () {
-    //    var curStep = $(this).closest(".setup-content"),
-    //        curStepBtn = curStep.attr("id"),
-    //        nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-    //        curInputs = curStep.find("input[type='text'],input[type='url']"),
-    //        isValid = true;
-
-    //    $(".form-group").removeClass("has-error");
-    //    for (var i = 0; i < curInputs.length; i++) {
-    //        if (!curInputs[i].validity.valid) {
-    //            isValid = false;
-    //            $(curInputs[i]).closest(".form-group").addClass("has-error");
-    //        }
-    //    }
-
-    //    if (isValid)
-    //        nextStepWizard.removeAttr('disabled').trigger('click');
-    //});
-
-    //$('div.setup-panel div a.btn-primary').trigger('click');
-
-
 });
+
+function acaoInicializarCampos() {
+    $("#ddlTipoSeguroId").chosen();
+    $("#ddlTipoCalculoId").chosen();
+    $("#ddlPaisId").chosen();
+    $("#ddlProfissaoId").chosen();
+    $("#ddlMarcaId").chosen({
+        width: "200px"
+    });
+    $("#ddlUsoId").chosen({
+        width: "250px"
+    });
+    $("#ddlIsencaoId").chosen({
+        width: "200px"
+    });
+    $("#ddlAnoId").chosen({
+        width: "150px"
+    });
+    $("#ddlAnoModeloId").chosen({
+        width: "150px"
+    });
+    $("#ddlRelacaoSeguradoId").chosen({
+        width: "250px"
+    });
+    $("#ddlEstadoCivilId").chosen({
+        width: "200px"
+    });
+    $("#ddlSexoId").chosen({
+        width: "200px"
+    });
+    $("#ddlTempoHabId").chosen({
+        width: "200px"
+    });
+    $("#ddlTipoResidenciaId").chosen({
+        width: "250px"
+    });
+    $("#ddlQtdVeicResId").chosen({
+        width: "200px"
+    });
+    $("#ddlDistanciaTrabalhoId").chosen({
+        width: "200px"
+    });
+}
 
 function acaoCamposGeral() {
     
@@ -133,32 +239,26 @@ function loadModelos(attribute) {
 
 function acaoAno() {
 
-    $('#ddlAnoId').select2({
-        placeholder: "Selecione",
-        allowClear: true
-    });
-
-    var numbers = [2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999];
+    var numbers = [2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
 
     var option = '';
+    option += '<option value="' + "" + '">' + "Selecione" + '</option>';
     for (var i = 0; i < numbers.length; i++) {
         option += '<option value="' + numbers[i] + '">' + numbers[i] + '</option>';
     }
-    $('#ddlAnoId').append(option);
+    $('#ddlAnoId').append(option).trigger("chosen:updated");
 }
 
 function acaoAnoModelo() {
 
-    $('#ddlAnoModeloId').select2({
-        placeholder: "Selecione",
-        allowClear: true
-    });
-
-    var numbers = [2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999];
+    var numbers = [2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
     var $stateAnoFab = $('#ddlAnoId');
     var anoModeloNumbers = [];
     var optionAnoModeloDown = '';
     var optionAnoModeloTop = '';
+
+    optionAnoModeloTop += '<option value="' + "" + '">' + "Selecione" + '</option>';
+    $('#ddlAnoModeloId').append(optionAnoModeloTop).trigger("chosen:updated");
 
     $stateAnoFab.on("change", function (event) {
 
@@ -183,10 +283,11 @@ function acaoAnoModelo() {
 
             optionAnoModeloTop += optionAnoModeloDown;
 
-            $('#ddlAnoModeloId').append(optionAnoModeloTop);
+            $('#ddlAnoModeloId').append(optionAnoModeloTop).trigger("chosen:updated");
 
         } else {
-            $('#ddlAnoModeloId').remove(optionAnoModeloTop);
+            $('#ddlAnoModeloId').empty();
+            $('#ddlAnoModeloId').trigger("chosen:updated");
         }
     }).trigger('change');
 }
@@ -199,18 +300,9 @@ function acaoCheckZeroKM() {
 
     $checkState.change(function () {
         if ($('input[id="checkbox-1"]:checked').length > 0) {
-            $ddlAnoFab.attr('disabled', 'disabled').val('');
-
-            $ddlAnoFab.val("2016").change();
-            $('#ddlAnoModeloId').val('').change();
-
             acaoCriarRemoverRow01(true);
 
         } else {
-            $ddlAnoFab.removeAttr('disabled');
-            $ddlAnoFab.val('').change();
-            $ddlAnoMod.val('').change();
-
             acaoCriarRemoverRow01(false);
         }
     }).trigger('change');
@@ -225,13 +317,13 @@ function acaoCriarRemoverRow01(element) {
 
         position.after(customDiv);
         $(customDiv).append(
-            '<div class="col-sm-5">' +
+            '<div class="col-sm-3">' +
             '   <div class="form-group">' +
             '       <label>Data de Saída</label>' +
             '       <input type="text" placeholder="dd/mm/aaaa" id="dataSaidaId" class="form-control">' +
             '   </div>' +
             '</div>' +
-            '<div class="col-sm-5">' +
+            '<div class="col-sm-3">' +
             '   <div class="form-group">' +
             '       <label>Odômetro</label>' +
             '       <input type="text" placeholder="Odômetro" class="form-control" id="idFormOdometro">' +
@@ -276,17 +368,26 @@ function acaoResultado() {
         if (marca == "" || modelo == "" || anoFab == null || anoMod == null) {
 
             var message = "Necessário preencher os dados do Veículo!!!";
-            $("#errorSummary").append('<div class="alert alert-danger alert-dismissable" ><button type="button" aria-hidden="true" class="close" data-dismiss="alert">×</button><h3>' + message + '</h3></div>');
+            $("#errorSummary").append(
+                '<div class="alert alert-danger alert-dismissable" > ' +
+                    '<div class="row">' +
+                        '<div class="col-sm-10">' +
+                            '<h3>' + message + '</h3>' +
+                        '</div>' +
+                        '<div class="col-sm-2">' +
+                            '<button type="button" aria-hidden="true" class="btn btn-danger btn-rounded button-glow" id="btnErrorSummaryVeiculo">×</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>');
             $("#errorSummary").slideToggle('slow');
 
         } else {
            
-            var position = $("#divDadosVeiculos");
-            var divResultado = $('<div class="col-lg-6" id="divResultadoId"></div>');
+            var position = $("#divDadosVeiculos"); 
+            var divResultado = $('<div class="ibox float-e-margins" id="divResultadoId"></div>');
 
             position.after(divResultado);
             $(divResultado).append(
-                '<div class="ibox float-e-margins">' +
                     '<div class="ibox-title">' +
                     '   <h5><strong>Resultados</strong></h5>' +
                     '   <div class="ibox-tools">' +
@@ -298,17 +399,16 @@ function acaoResultado() {
                     '      </tbody>' +
                     '      <tfoot> ' +
                     '           <tr>' +
-                    '                <td>'+
-                    '                    <button type="button" class="btn btn-outline button-glow btn-danger sm pull-left" id="btnBackFind">Back to</button>'+
-                    '                </td>'+
-                    '                <td colspan="5">'+
-                    '                    <ul class="pagination pull-right"></ul>'+
-                    '                </td>'+
+                    '                <td>' +
+                    '                    <button type="button" class="btn btn-outline button-glow btn-danger sm pull-left" id="btnBackFind">Back to</button>' +
+                    '                </td>' +
+                    '                <td colspan="5">' +
+                    '                    <ul class="pagination pull-right"></ul>' +
+                    '                </td>' +
                     '            </tr>' +
                     '      </tfoot> ' +
                     '   </table>' +
-                    '</div>' +
-                '</div>'
+                    '</div>'
             );
 
             var url = '/Cotacao/LoadModelosResults/?marcaId=' + marca + '&modelo=' + modelo + '&anoFabricacao=' + anoFab + '&anoModelo=' + anoMod + '&zeroKm=' + flagZeroKm;
@@ -371,7 +471,7 @@ function acaoResultado() {
             $("#divResultadoId").slideToggle('slow');
         });
 
-        acaoTravarCoberturaBasica(true, buttonModeloId);
+        //acaoTravarCoberturaBasica(true, buttonModeloId);
     });
 
     $(document).on('click', "#btnNovaPesquisa", function (event) {
@@ -385,8 +485,8 @@ function acaoResultado() {
 
 function acaoCriarVeiculoEscolhido(element, item) {
 
-    var position = $("#divDadosVeiculos");
-    var veiculoEscolhidoDiv = $('<div class="col-lg-6" id="rowVeiculoEscolhido"></div>');
+    var position = $("#divVeiculoSelecionadoId");
+    var veiculoEscolhidoDiv = $('<div class="row" id="rowVeiculoEscolhido"></div>');
 
     var itemMarca = JSON.parse(JSON.stringify(item.Marca));
 
@@ -394,43 +494,30 @@ function acaoCriarVeiculoEscolhido(element, item) {
 
         position.after(veiculoEscolhidoDiv);
         $(veiculoEscolhidoDiv).append(
-            '<div class="ibox float-e-margins">' +
-                '<div class="ibox-title">' +
-                '   <h5><strong>Resultados</strong></h5>' +
-                '   <div class="ibox-tools">' +
-                '   </div>' +
-                '</div>' +
-                '<div class="ibox-content no-padding">' +
-                '   <ul class="list-group">' +
-                '      <li class="list-group-item">' +
-                '         <div class="row" id="rowSelectedVeiculo" data-id="'+item.ModeloId+'">' +
-                '              <div class="col-sm-4">' +
-                '                    <span><img class="icon" src="../../img/Veiculos/Marcas/' + itemMarca.Imagem + '" alt="Electricity" width="100" height="70"></span>' +
-                '              </div>' +
-                '              <div class="col-sm-8">' +
-                '                 <div class="form-group">' +
-                '                    <font face="Palatino Linotype">' +
+                '<div class="hr-line-dashed"></div>' +
+                '<div class="col-sm-12">' +
+                '    <div class="row" id="rowSelectedVeiculo" data-id="' + item.ModeloId + '">' +
+                '          <div class="col-sm-4">' +
+                '                <span><img class="icon" src="../../img/Veiculos/Marcas/' + itemMarca.Imagem + '" alt="Electricity" width="100" height="70"></span>' +
+                '           </div>' +
+                '          <div class="col-sm-5">' +
+                '               <div class="form-group">' +
+                '                    <font face="Palatino Linotype" size="3">' +
                                            " " + item.Descricao +
                                            "<br>" + item.AnoFabricacao + "/" + item.AnoModelo + " " + "R$: " + item.Valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') +
                 '                    </font>' +
-                '                 </div>' +
-                '             </div>' +
-                '         </div>' +
-                '      </li> ' +
-                '      <li class="list-group-item">' +
-                '         <div class="row">' +
-                '              <div class="col-sm-12">' +
-                '                    <button type="button" class="btn btn-outline button-glow btn-danger sm pull-left" id="btnNovaPesquisa">Nova Pesquisa</button>' +
-                '              </div>' +
-                '         </div>' +
-                '      </li> ' +
-                '   </ul>' +
-                '</div>' +
-            '</div>'
+                '               </div>' +
+                '           </div>' +
+                '           <div class="col-sm-3">' +
+                '               <button type="button" class="btn btn-outline button-glow btn-danger sm pull-left" id="btnNovaPesquisa">Nova Pesquisa</button>' +
+                '           </div>' +
+                '    </div>' +
+                '</div>'
         );
 
     } else {
         $("#rowVeiculoEscolhido").remove();
+        $("#divVeiculoSelecionadoId").remove();
     }
 }
 
@@ -458,8 +545,8 @@ function DisableDadosVeiculos() {
     var $modeloValor = $('#TxtModeloId').val();
 
     $checkState.attr('disabled', 'disabled');
-    $anoModelo.attr('disabled', 'disabled');
-    $anoFab.attr('disabled', 'disabled');
+    $anoModelo.attr('disabled', 'disabled').trigger("chosen:updated");
+    $anoFab.attr('disabled', 'disabled').trigger("chosen:updated");
     $modelo.attr('disabled', 'disabled').val($modeloValor);
     $buttonFind.attr('disabled', 'disabled');
 
@@ -485,14 +572,15 @@ function EnableDadosVeiculos() {
     var $buttonFind = $('#btnBuscarVeic');
 
     $checkState.removeAttr('disabled');
-    $anoModelo.removeAttr('disabled');
+    $anoModelo.removeAttr('disabled').trigger("chosen:updated");
     $modelo.removeAttr('disabled');
     $marca.removeAttr('disabled');
     $buttonFind.removeAttr('disabled');
+    $anoFab.removeAttr('disabled').trigger("chosen:updated");
 
-    if (!$('input[id="checkbox-1"]:checked').length > 0) {
-        $anoFab.removeAttr('disabled');
-    }
+    //if (!$('input[id="checkbox-1"]:checked').length > 0) {
+    //    $anoFab.removeAttr('disabled').trigger("chosen:updated");
+    //}
 
     $("#ddlMarcaId option").each(function () {
         var $thisOption = $(this);
@@ -972,54 +1060,55 @@ function acaoPrincipalCondutor() {
 
 function acaoCalcular() {
 
-    $(document).on('click', "#btnCalcular", function (event) {
+    //$(document).on('click', "#btnCalcular", function (event) {
 
-        $("#errorSummaryCotacao").hide();
-        $("#errorSummaryCotacao").empty();
+    $("#errorSummaryCotacao").hide();
+    $("#errorSummaryCotacao").empty();
 
-        var model = MountBasicInformation();
-        var item = MountItem();
-        var perfil = MountPerfil();
-        var questionario = MountQuestionario();
-        var cliente = MountClient();
-        var coberturas = MountCoberturas();
+    var model = MountBasicInformation();
+    var item = MountItem();
+    var perfil = MountPerfil();
+    var questionario = MountQuestionario();
+    var cliente = MountClient();
+    var coberturas = MountCoberturas();
 
-        model.Cliente = cliente;
-        model.Item = item;
-        model.Perfil = perfil;
-        model.Questionario = questionario;
-        model.Item.ListCoberturasItem = coberturas;
+    model.Cliente = cliente;
+    model.Item = item;
+    model.Perfil = perfil;
+    model.Questionario = questionario;
+    model.Item.ListCoberturasItem = coberturas;
 
-        $.ajax(
-        {
-            dataType: 'JSON',
-            url: '/Cotacao/CotacaoAutomovel/',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ model: model }),
+    $.ajax(
+    {
+        dataType: 'JSON',
+        url: '/Cotacao/CotacaoAutomovel/',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ model: model }),
 
-            success: function (response) {
+        success: function (response) {
 
-                if (response.error == "") {
-                    var url = "/Cotacao/CotacaoResultado?cotacaoId=" + response.model.CotacaoId + "&premioTotal=" + response.model.PremioTotal;
-                    window.location.href = url;
-                }
-
-                if (response.error == "ModelStateError")
-                    MountModelStateErrorMessage(response.model);
-
-                //    //$("#errorSummary").append('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><h3>' + response.message + '</h3></div>');
-
-                if (response.error == "ValildationResultError")
-                    MountValildationResultError(response.model);
-
-                //$("#errorSummary").slideToggle('slow');
-            },
-            error: function (xhr) {
-                alert("An error occured when trying to create your character. Plase try again later");
+            if (response.error == "") {
+                var url = "/Cotacao/CotacaoResultado?cotacaoId=" + response.model.CotacaoId;
+                window.location.href = url;
             }
-        });
+
+            if (response.error == "ModelStateError") {
+                MountModelStateErrorMessage(response.model);
+                return false;
+            }
+
+            if (response.error == "ValildationResultError") {
+                MountValildationResultError(response.model);
+                return false;
+            }
+        },
+        error: function (xhr) {
+            alert("An error occured when trying to create your character. Plase try again later");
+        }
     });
+
+    //});
 }
 
 function MountModelStateErrorMessage(model) {
@@ -1267,7 +1356,7 @@ function acaoTravarCoberturaBasica(state, value) {
         
         $("#listCobId > li").each(function (index, element) {
 
-            jQuery(element).find(".touchspin2").val('').change();
+            jQuery(element).find(".touchspin2").val('0').change();
             jQuery(element).find(".touchspin2").removeAttr('disabled');
         });
     }
@@ -1276,6 +1365,11 @@ function acaoTravarCoberturaBasica(state, value) {
 $(document).on('click', "#btnErrorSummaryCotacao", function (event) {
     $("#errorSummaryCotacao").hide();
     $("#errorSummaryCotacao").empty();
+});
+
+$(document).on('click', "#btnErrorSummaryVeiculo", function (event) {
+    $("#errorSummary").hide();
+    $("#errorSummary").empty();
 });
 
 function acaoVoltar() {

@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="ModuloCongressoConnection-Web.config Connection String" description="ModuloCongressoConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:testeseguros-server.database.windows.net;Initial Catalog=ModuloCongresso_BD;Integrated Security=False;User ID=felipefear@testeseguros-server;Password=Mjvypo22@@0;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Felipe\\Documents\\Visual\ Studio\ 2015\\Projects\\ModuloCongresso\\src\\ModuloCongresso\.UI\.Site\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ModuloCongressoConnection']/@connectionString" />
-  </parameter>
-</parameters>

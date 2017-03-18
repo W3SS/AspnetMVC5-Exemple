@@ -12,6 +12,7 @@ namespace ModuloCongresso.Application.ViewModels
         {
             ClienteId = Guid.NewGuid();
             EnderecoId = Guid.NewGuid();
+            ValidationResult = new DomainValidation.Validation.ValidationResult();
         }
 
         #region  Cliente

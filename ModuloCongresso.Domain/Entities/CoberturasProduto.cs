@@ -18,8 +18,6 @@
 
         public double Taxa { get; set; }
 
-        public double Franquia { get; set; }
-
         public virtual Produto Produtos { get; set; }
 
         public virtual Coberturas Coberturas { get; set; }

@@ -311,10 +311,26 @@
     <Content Include="img\testes\logo_big.png" />
     <Content Include="img\testes\logo_white.png" />
     <Content Include="img\Veiculos\Carros\Corolla_Altis.jpg" />
+    <Content Include="img\Veiculos\Marcas\aston.png" />
+    <Content Include="img\Veiculos\Marcas\audi.png" />
+    <Content Include="img\Veiculos\Marcas\bmw.jpg" />
     <Content Include="img\Veiculos\Marcas\Chevrolet.jpg" />
+    <Content Include="img\Veiculos\Marcas\citroen.png" />
+    <Content Include="img\Veiculos\Marcas\ferrari.png" />
+    <Content Include="img\Veiculos\Marcas\fiat.jpg" />
+    <Content Include="img\Veiculos\Marcas\ford.jpg" />
     <Content Include="img\Veiculos\Marcas\Honda.jpg" />
     <Content Include="img\Veiculos\Marcas\hyundai.jpg" />
+    <Content Include="img\Veiculos\Marcas\jac.png" />
+    <Content Include="img\Veiculos\Marcas\jeep.png" />
+    <Content Include="img\Veiculos\Marcas\kia.png" />
+    <Content Include="img\Veiculos\Marcas\mercedez.png" />
+    <Content Include="img\Veiculos\Marcas\nissan.jpg" />
+    <Content Include="img\Veiculos\Marcas\peugeot.png" />
+    <Content Include="img\Veiculos\Marcas\renault.png" />
     <Content Include="img\Veiculos\Marcas\Toyota.jpg" />
+    <Content Include="img\Veiculos\Marcas\volks.jpg" />
+    <Content Include="img\Veiculos\Marcas\volvo.jpg" />
     <Content Include="img\Veiculos\Produtos\bike_insurance.jpg" />
     <Content Include="img\Veiculos\Produtos\car_insurance.jpg" />
     <Content Include="img\Veiculos\Produtos\home_insurance.jpg" />
@@ -341,6 +357,7 @@
     <Content Include="Scripts\Cotacao\CotacaoScript.js" />
     <Content Include="Scripts\Cotacao\EditCotacaoAutomovelUIScript.js" />
     <Content Include="Scripts\Cotacao\jquery.mask.min.js" />
+    <Content Include="Scripts\Cotacao\jquery.steps.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -379,8 +396,9 @@
     <Content Include="Scripts\Template 3\Wizard\jquery.steps.min.js" />
     <Content Include="Scripts\Template 3\Wizard\wizardScript.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Cotacao\_cotacoesRealizadas.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -421,7 +439,7 @@
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Cotacao\_selectedProductAutomovel.cshtml" />
-    <Content Include="Views\Cotacao\_cotacaoAutomovel.cshtml" />
+    <Content Include="Views\Cotacao\_automovelCotacao.cshtml" />
     <Content Include="Views\Cotacao\_selectedProductMoto.cshtml" />
     <Content Include="Views\Cotacao\_selectedProductResidencial.cshtml" />
     <Content Include="Views\Cotacao\CotacaoAutomovel.cshtml" />
@@ -464,6 +482,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Cotacao\EditCotacaoAutomovel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cotacao\_cotacoesRealizadas.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cotacao\_automovelItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cotacao\_automovelSegurado.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cotacao\_automovelQuestionario.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cotacao\_automovelPerfil.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cotacao\_automovelCoberturas.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cotacao\_automovelResumo.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

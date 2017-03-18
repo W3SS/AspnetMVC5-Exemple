@@ -27,6 +27,9 @@ namespace ModuloCongresso.Infra.Data.EntityConfig
             Property(m => m.Valor)
                 .IsRequired();
 
+            Property(m => m.Franquia)
+                .IsRequired();
+
             HasRequired(m => m.Marca)
                 .WithMany(m => m.Modelos)
                 .HasForeignKey(m => m.MarcaId);

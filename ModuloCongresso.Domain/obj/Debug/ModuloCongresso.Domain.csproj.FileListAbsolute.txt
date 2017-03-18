@@ -1,8 +1,8 @@
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\bin\Debug\ModuloCongresso.Domain.dll
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\bin\Debug\ModuloCongresso.Domain.pdb
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\bin\Debug\DomainValidation.dll
+C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\obj\Debug\ModuloCongresso.Domain.csprojResolveAssemblyReference.cache
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\obj\Debug\ModuloCongresso.Domain.Validations.ValidationMessages.resources
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\obj\Debug\ModuloCongresso.Domain.csproj.GenerateResource.Cache
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\obj\Debug\ModuloCongresso.Domain.dll
 C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\obj\Debug\ModuloCongresso.Domain.pdb
-C:\Users\Felipe\Documents\Visual Studio 2015\Projects\ModuloCongresso\src\ModuloCongresso.Domain\obj\Debug\ModuloCongresso.Domain.csprojResolveAssemblyReference.cache

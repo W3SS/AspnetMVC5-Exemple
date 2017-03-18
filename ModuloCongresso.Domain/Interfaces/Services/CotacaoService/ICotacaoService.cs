@@ -13,5 +13,9 @@ namespace ModuloCongresso.Domain.Interfaces.Services.CotacaoService
         Cotacao ObterCotacaoPorId(int cotacaoId);
 
         IEnumerable<Cotacao> ObterCotacoesPorUsuario(Guid userId);
+
+        decimal ObterPremioCotacao(int cotacaoId);
+
+        Cotacao Validar(Cotacao cotacao);
     }
 }

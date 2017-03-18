@@ -1,0 +1,39 @@
+﻿@model ModuloCongresso.Application.ViewModels.Cotacao.CotacaoViewModel
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label class="font-noraml"><strong>@Html.LabelFor(model => model.TiposSeguro)</strong></label>
+            <div class="input-group">
+                @Html.DropDownListFor(model => model.TipoSeguroId, Model.TiposSeguro, "Selecione",
+                   new { id = "ddlTipoSeguroId", style = "width: 200px;", tabindex = "2" })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label class="font-noraml"><strong>@Html.LabelFor(model => model.TiposCalculo)</strong></label>
+            <div class="input-group">
+                <select style="width: 200px;" tabindex="2" id="ddlTipoCalculoId">
+                    <option value="">Selecione</option>
+                    @foreach (var item in Model.TiposCalculo)
+                    {
+                        <option value=@item.Value>@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group" id="data_5">
+            <label class="font-noraml"><strong>@Html.LabelFor(model => model.DataVigenciaInicial) / @Html.LabelFor(model => model.DataVigenciaFinal)</strong></label>
+            <div class="input-daterange input-group" id="datepicker">
+                <input type="text" class="input-sm form-control" name="start" id="dateStartId" value=""/>
+                <span class="input-group-addon">Até</span>
+                <input type="text" class="input-sm form-control" name="end" id="dateEndId" value=""/>
+            </div>
+        </div>
+    </div>
+</div>

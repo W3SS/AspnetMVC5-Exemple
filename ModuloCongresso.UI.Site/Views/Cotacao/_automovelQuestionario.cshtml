@@ -1,0 +1,99 @@
+﻿@model ModuloCongresso.Application.ViewModels.Cotacao.QuestionarioViewModel
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">@Html.LabelFor(model => model.CepPernoite)</font> 
+            @Html.EditorFor(model => model.CepPernoite, new {htmlAttributes = new {@class = "form-control margin-bottom-10", id = "CepPernoiteId"}})
+            @Html.ValidationMessageFor(model => model.CepPernoite, "", new {@class = "text-danger"})
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.RelacaoSegurado)
+            </font>
+            <div class="input-group">
+                <select id="ddlRelacaoSeguradoId" tabindex="2"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagAlienado)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionLEAS_Sim" name="checkLeasing"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionLEAS_Nao" name="checkLeasing"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagBlindado)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionBLIND_Sim" name="checkBLIND"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionBLIND_Nao" name="checkBLIND"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagAdaptadoDeficiente)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionPNE_Sim" name="checkPNE"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionPNE_Nao" name="checkPNE"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagKitGas)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionGAS_Sim" name="checkGAS"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionGAS_Nao" name="checkGAS"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row" id="rowAntiFurtoId">
+    <div class="col-sm-12" id="divRespostaFurto">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagAntiFurto)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionFurto_Sim" name="checkFurto"> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionFurto_Nao" name="checkFurto"> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hr-line-dashed"></div>
+<div class="row" id="rowGaragemId">
+    <div class="col-sm-6" id="divRespostaGaragem">
+        <div class="form-group">
+            <font face="Palatino Linotype">
+                @Html.LabelFor(model => model.FlagGararem)
+            </font>
+            <div class="radio i-checks">
+                <label> <input type="radio" value="optionGaragem_Sim" name="checkGaragem" /> <i></i> Sim </label>
+                <label> <input type="radio" checked="" value="optionGaragem_Nao" name="checkGaragem" /> <i></i> Não </label>
+            </div>
+        </div>
+    </div>
+</div>

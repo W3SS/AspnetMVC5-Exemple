@@ -32,7 +32,6 @@ namespace ModuloCongresso.UI.Site.Controllers
         private readonly IDistanciaTrabalhoAppService _distanciaTrabalhoAppService;
         private readonly IUsoAppService _usoAppService;
         private readonly IImpostoAppService _impostoAppService;
-        private readonly IItemAppService _itemAppService;
 
         public CotacaoController(IMarcaAppService marcaAppService,
             IModeloAppService modeloAppService,
@@ -50,8 +49,7 @@ namespace ModuloCongresso.UI.Site.Controllers
             ITempoHabilitacaoAppService tempoHabilitacaoAppService,
             IDistanciaTrabalhoAppService distanciaTrabalhoAppService,
             IUsoAppService usoAppService,
-            IImpostoAppService impostoAppService,
-            IItemAppService itemAppService)
+            IImpostoAppService impostoAppService)
         {
             _marcaAppService = marcaAppService;
             _modeloAppService = modeloAppService;
@@ -70,7 +68,6 @@ namespace ModuloCongresso.UI.Site.Controllers
             _distanciaTrabalhoAppService = distanciaTrabalhoAppService;
             _usoAppService = usoAppService;
             _impostoAppService = impostoAppService;
-            _itemAppService = itemAppService;
         }
 
         // GET: Cotacao
@@ -82,19 +79,22 @@ namespace ModuloCongresso.UI.Site.Controllers
         }
 
         [HttpGet]
-        public ActionResult CotacaoResultado(string cotacaoId, string premioTotal)
+        public ActionResult CotacaoResultado(string cotacaoId)
         {
             var descricao = _cotacaoAppService.ObterDescricaoModeloCotacao(int.Parse(cotacaoId));
+            var franquia = _modeloAppService.ObterFranquiaModelo(int.Parse(cotacaoId));
+            var premioTotal = _cotacaoAppService.ObterPremioCotacao(int.Parse(cotacaoId));
 
-            var cotacao = new CotacaoViewModel
+            var cotacaoResultado = new CotacaoResultadoViewModel
             {
                 CotacaoId = int.Parse(cotacaoId),
-                PremioTotal = decimal.Parse(premioTotal),
-                Descricao = descricao
+                PremioTotal = premioTotal,
+                Descricao = descricao,
+                Franquia = franquia
             };
 
 
-            return View(cotacao);
+            return View(cotacaoResultado);
         }
 
         [HttpGet]
@@ -410,6 +410,88 @@ namespace ModuloCongresso.UI.Site.Controllers
             object result = new { Ano = dados, FlagZeroKm = zeroKm };
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult LoadDescricaoModelo(string modeloId)
+        {
+            var descricao = _modeloAppService.ObterDescricaoModelo(int.Parse(modeloId));
+
+            return Json(descricao, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult CotacaoAutomovelSeguroSegurado(CotacaoViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errorList = ModelState.ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                return Json(new { error = "ModelStateError", model = errorList.Where(t => t.Value.Length > 0) });
+            }
+
+            model.ValidationResult = new DomainValidation.Validation.ValidationResult();
+
+            model = _cotacaoAppService.Validar(model);
+
+            if (!model.ValidationResult.IsValid)
+            {
+                LoadCotacaoErrors(model);
+                return Json(new { error = "ValildationResultError", model = model.ValidationResult });
+            }
+
+            return Json(new { error = ""});
+        }
+
+        [HttpPost]
+        public JsonResult CotacaoAutomovelVeiculo(ItemViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errorList = ModelState.ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                return Json(new { error = "ModelStateError", model = errorList.Where(t => t.Value.Length > 0) });
+            }
+
+            return Json(new { error = "" });
+        }
+
+        [HttpPost]
+        public JsonResult CotacaoAutomovelQuestionario(QuestionarioViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errorList = ModelState.ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                return Json(new { error = "ModelStateError", model = errorList.Where(t => t.Value.Length > 0) });
+            }
+
+            return Json(new { error = "" });
+        }
+
+        [HttpPost]
+        public JsonResult CotacaoAutomovelPerfil(PerfilViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errorList = ModelState.ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                return Json(new { error = "ModelStateError", model = errorList.Where(t => t.Value.Length > 0) });
+            }
+
+            return Json(new { error = "" });
         }
     }
 }

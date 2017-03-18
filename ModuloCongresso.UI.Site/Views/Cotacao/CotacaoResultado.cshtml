@@ -1,5 +1,5 @@
 ﻿@using System.Web.UI.WebControls
-@model ModuloCongresso.Application.ViewModels.Cotacao.CotacaoViewModel
+@model ModuloCongresso.Application.ViewModels.Business.CotacaoResultadoViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout_3.cshtml";
@@ -59,7 +59,7 @@
                                             <font face="Palatino Linotype">Franquia:</font>
                                         </div>
                                         <div class="col-sm-6">
-                                            Em breve
+                                            R$ @Html.DisplayFor(model => model.Franquia, new { htmlAttributes = new { @class = "form-control margin-bottom-10", id = "TxtFranquia" } })
                                         </div>
                                     </div>
                                 </li>

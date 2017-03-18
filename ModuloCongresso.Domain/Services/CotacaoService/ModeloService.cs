@@ -106,7 +106,14 @@ namespace ModuloCongresso.Domain.Services.CotacaoService
             listaAno.Add(ObterAnoModelo(modeloId));
 
             return listaAno;
-        } 
+        }
+
+        public decimal ObterFranquiaModelo(int cotacaoId)
+        {
+            var modeloId = ObterIdModeloCotacao(cotacaoId);
+
+            return ObterModeloPorId(modeloId).Franquia;
+        }
 
         public void Dispose()
         {

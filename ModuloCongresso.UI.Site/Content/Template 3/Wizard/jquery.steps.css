@@ -68,7 +68,7 @@
 
 .wizard > .steps > ul > li
 {
-    width: 25%;
+    width: 20%;
 }
 
 .wizard > .steps > ul > li,
@@ -134,11 +134,11 @@
 
 .wizard > .content
 {
-    background: #eee;
+    background: transparent;
     display: block;
     margin: 5px 5px 10px 5px;
     min-height: 120px;
-    overflow: hidden;
+    overflow: scroll;
     position: relative;
     width: auto;
 
@@ -164,7 +164,7 @@
     position: absolute;
     width: 95%;
     height: 95%;
-    padding: 2.5%;
+    padding: 0;
 }
 
 .wizard > .content > .body ul

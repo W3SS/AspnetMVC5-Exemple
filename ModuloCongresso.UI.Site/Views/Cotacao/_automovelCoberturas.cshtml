@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ModuloCongresso.Application.ViewModels.Cotacao.CoberturasViewModel>
+
+@foreach (var coberturas in Model)
+{
+    <li class="list-group-item" id="@coberturas.CoberturaId">
+        <div class="row">
+            <div class="col-sm-2">
+                <span><img class="icon" src="../../img/Icons/Events/@coberturas.Imagem" alt="Electricity" width="30" height="30"></span>
+            </div>
+            <div class="col-sm-4">
+                <font face="Palatino Linotype">
+                    <h3>
+                        <strong>@Html.DisplayFor(modelItem => coberturas.Descricao)</strong>
+                    </h3>
+                </font>
+            </div>
+            <div class="col-sm-1">
+                <div id="infoCob_@coberturas.CoberturaId" class="icon material-icons">help</div>
+                <div class="mdl-tooltip" for="infoCob_@coberturas.CoberturaId">
+                    @coberturas.Info
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <input class="touchspin2" type="text" value="0" name="touchspinCobertura" id="valorCobId">
+            </div>
+        </div>
+    </li>
+}

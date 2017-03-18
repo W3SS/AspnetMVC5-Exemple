@@ -21,9 +21,6 @@ namespace ModuloCongresso.Infra.Data.EntityConfig
             Property(cp => cp.ValorMaximo)
                 .IsOptional();
 
-            Property(cp => cp.Franquia)
-                .IsRequired();
-
             Property(cp => cp.Taxa)
                  .IsRequired();
 
