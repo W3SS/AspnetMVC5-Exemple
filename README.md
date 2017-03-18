@@ -6,6 +6,7 @@
 - ASP.NET MVC 5
 - C#
 - Jquery 3.1.0
+- Jquery Wizard Steps + Model Validation/Specification with Steps
 - Json Result
 - Bootstrap
 - EntityFramework 6.1.3
